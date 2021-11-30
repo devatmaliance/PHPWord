@@ -255,7 +255,10 @@ class ZipArchive
 
         if ($tempFile) {
             // Remove temp file, if created
-            unlink($this->tempDir . DIRECTORY_SEPARATOR . $localnameParts['basename']);
+            $file = $this->tempDir . DIRECTORY_SEPARATOR . $localnameParts['basename'];
+            if(file_exists($file)){
+                unlink($file);
+            }
         }
 
         return $res != 0;
